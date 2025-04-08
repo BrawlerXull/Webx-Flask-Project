@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<!-- Welcome Header -->
+<div class="bg-gradient text-white text-center py-5 animate__animated animate__fadeInDown">
+  <h1 class="display-5 fw-bold">Dashboard</h1>
+  <p class="lead">Welcome {{session.username}}</p>
+</div>
+
+<!-- Add Article Button -->
+<div class="container my-4 text-end animate__animated animate__fadeIn">
+  <a class="btn btn-success shadow-sm" href="/add_article">
+    ➕ Add Article
+  </a>
+</div>
+
+<!-- Articles Table -->
+<div class="container mb-5 animate__animated animate__fadeInUp">
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Date</th>
+            <th colspan="2" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for article in articles %}
+          <tr>
+            <td>{{article.id}}</td>
+            <td>{{article.title}}</td>
+            <td>{{article.author}}</td>
+            <td>{{article.create_date}}</td>
+            <td class="text-center">
+              <a href="edit_article/{{article.id}}" class="btn btn-outline-primary btn-sm">✏️ Edit</a>
+            </td>
+            <td class="text-center">
+              <form action="{{url_for('delete_article', id=article.id)}}" method="post" onsubmit="return confirm('Are you sure you want to delete this article?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="🗑️ Delete" class="btn btn-outline-danger btn-sm">
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Styles & Animations -->
+<style>
+  .bg-gradient {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  }
+
+  .btn-outline-primary:hover,
+  .btn-outline-danger:hover {
+    transform: scale(1.05);
+    transition: 0.2s ease;
+  }
+</style>
+
+<!-- Animate.css CDN -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<!-- Header -->
+<div class="text-center py-5 bg-gradient text-white animate__animated animate__fadeInDown">
+  <h1 class="display-6 fw-bold">🔐 Login</h1>
+  <p class="lead">Access your account securely</p>
+</div>
+
+<!-- Login Form -->
+<div class="container my-5 d-flex justify-content-center">
+  <div class="card p-4 shadow-sm border-0 animate__animated animate__fadeInUp" style="width: 100%; max-width: 400px;">
+    <form method="POST">
+      <div class="mb-3">
+        <label for="username" class="form-label">👤 Username</label>
+        <input type="text" name="username" class="form-control" value="{{ request.form.username }}" placeholder="Enter username">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">🔒 Password</label>
+        <input type="password" name="password" class="form-control" value="{{ request.form.password }}" placeholder="Enter password">
+      </div>
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+    </form>
+
+    <!-- Register Redirect -->
+    <div class="text-center mt-3">
+      <small>Don't have an account? <a href="/register">Register here</a></small>
+    </div>
+  </div>
+</div>
+
+<!-- Custom Styles -->
+<style>
+  .bg-gradient {
+    background: linear-gradient(135deg, #fc466b 0%, #3f5efb 100%);
+  }
+</style>
+
+<!-- Animate.css -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+{% endblock %}

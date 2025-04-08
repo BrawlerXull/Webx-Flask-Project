@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<!-- Hero Section -->
+<div class="bg-gradient text-white text-center py-5 animate__animated animate__fadeInDown">
+  <h1 class="display-5 fw-bold">{{ article.title }}</h1>
+  <p class="lead">By {{ article.author }} on {{ article.create_date }}</p>
+</div>
+
+<!-- Article Content -->
+<div class="container my-5 animate__animated animate__fadeInUp">
+  <div class="card shadow-sm border-0 p-4">
+    <div class="article-body" style="line-height: 1.8; font-size: 1.1rem;">
+      {{ article.body | safe }}
+    </div>
+  </div>
+</div>
+
+<!-- Styles -->
+<style>
+  .bg-gradient {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  }
+</style>
+
+<!-- Animate.css -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+{% endblock %}

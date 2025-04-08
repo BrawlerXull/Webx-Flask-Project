@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<!-- Articles Header -->
+<div class="text-center py-5 bg-gradient text-white animate__animated animate__fadeInDown">
+  <h1 class="display-5 fw-bold">📚 Latest Articles</h1>
+  <p class="lead">Explore fresh perspectives from our thoughtful writers</p>
+</div>
+
+<!-- Articles Grid -->
+<div class="container my-5">
+  <div class="row g-4">
+    {% for article in articles %}
+    <div class="col-sm-12 col-md-6 col-lg-4 animate__animated animate__fadeInUp">
+      <div class="card border-0 shadow-sm h-100 hover-card">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div>
+            <h5 class="card-title">
+              <a href="/article/{{article.id}}" class="text-decoration-none text-dark">
+                {{ article.title }}
+              </a>
+            </h5>
+            <p class="card-text text-muted mb-2" style="font-size: 0.9rem;">
+              {{ article.body[:100] }}...
+            </p>
+          </div>
+          <div class="mt-3">
+            <span class="badge bg-primary text-white">✍️ {{ article.author }}</span>
+            <span class="text-muted float-end" style="font-size: 0.8rem;">🕒 {{ article.create_date }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Custom CSS -->
+<style>
+  .bg-gradient {
+    background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+  }
+
+  .hover-card {
+    transition: all 0.3s ease;
+  }
+
+  .hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  a:hover {
+    color: #0d6efd !important;
+  }
+</style>
+
+<!-- Animate.css -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<!-- Header -->
+<div class="bg-gradient text-white text-center py-5 animate__animated animate__fadeInDown">
+  <h1 class="display-6 fw-bold">Add New Article</h1>
+  <p class="lead">Share your thoughts with the world</p>
+</div>
+
+<!-- Form Section -->
+<div class="container my-5 animate__animated animate__fadeInUp">
+  <div class="card shadow-sm border-0 p-4">
+    {% from "includes/_formhelpers.html" import render_field %}
+    <form action="" method="POST">
+      <div class="mb-3">
+        {{ render_field(form.title, class_="form-control", placeholder="Article Title") }}
+      </div>
+      <div class="mb-3">
+        {{ render_field(form.body, class_="form-control", id="editor", placeholder="Start writing...") }}
+      </div>
+      <div class="text-end">
+        <input class="btn btn-primary px-4" type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Custom Styles -->
+<style>
+  .bg-gradient {
+    background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+  }
+</style>
+
+<!-- Animate.css CDN -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+{% endblock %}
